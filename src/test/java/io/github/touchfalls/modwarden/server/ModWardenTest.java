@@ -10,6 +10,7 @@ class ModWardenTest {
     void whitelistAllowsSystemAndFabricModulesOnly() {
         assertTrue(ModsConfig.isModAllowed("minecraft"));
         assertTrue(ModsConfig.isModAllowed("modwarden"));
+        assertTrue(ModsConfig.isModAllowed("mixinextras"));
         assertTrue(ModsConfig.isModAllowed("fabric-data-attachment-api-v1"));
         assertFalse(ModsConfig.isModAllowed("sodium"));
     }

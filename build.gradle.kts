@@ -21,21 +21,14 @@ val compatibleVersions: List<String> = sc.properties.rawOrNull("mod", "mc_releas
     ?.asList().orEmpty().map { it.toString() }
 
 dependencies {
-    /**
-     * Fetches only the required Fabric API modules to not waste time downloading all of them for each version.
-     * @see <a href="https://github.com/FabricMC/fabric">List of Fabric API modules</a>
-     */
-    fun fapi(vararg modules: String) {
-        for (it in modules) modImplementation(fabricApi.module(it, sc.properties["deps.fabric_api"]))
-    }
-
     minecraft("com.mojang:minecraft:${sc.current.version}")
     // Applies Mojang Mappings on obfuscated versions
     loomx.applyMojangMappings()
 
     // Use `mod{dependency type}` even on 26.1+ - loom-back-compat converts them
     modImplementation("net.fabricmc:fabric-loader:${sc.properties["deps.fabric_loader"]}")
-    fapi("fabric-api-base", "fabric-lifecycle-events-v1", "fabric-networking-api-v1")
+    // The full API, not single modules: fabric.mod.json depends on the "fabric-api" mod id
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${sc.properties["deps.fabric_api"]}")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

@@ -39,6 +39,7 @@ public class ModsConfig {
         SYSTEM_MODS.add("minecraft");
         SYSTEM_MODS.add("java");
         SYSTEM_MODS.add("fabricloader");
+        SYSTEM_MODS.add("mixinextras"); // bundled with Fabric Loader
         SYSTEM_MODS.add("fabric-api");
         SYSTEM_MODS.add("fabric");
         SYSTEM_MODS.add("modwarden");
