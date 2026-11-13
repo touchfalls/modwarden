@@ -105,6 +105,8 @@ modrinth {
     uploadFile.set(loomx.modJar)
     gameVersions.addAll(compatibleVersions)
     loaders.addAll("fabric", "quilt")
+    // Needed on both sides: the client sends its mod list, the server checks it
+    environment = "client_and_server"
     changelog = rootProject.file("CHANGELOG.md").readText()
     syncBodyFrom = rootProject.file("README.md").readText()
     dependencies {
