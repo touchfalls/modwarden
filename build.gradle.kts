@@ -105,7 +105,7 @@ tasks {
 }
 modrinth {
     token = providers.environmentVariable("MODRINTH_TOKEN")
-    projectId = "modwarden"
+    projectId = "modwarden-touchfalls"
     versionNumber = version.toString()
     versionName = "${sc.properties["mod.name"]} ${sc.properties["mod.version"]} for ${sc.current.version}"
     versionType = "release"
