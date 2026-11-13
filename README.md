@@ -1,12 +1,21 @@
 # ModWarden
 
-Checks which mods a player has installed when they join a Fabric server, and kicks them if the list breaks the server's rules.
+Control which mods players can join your Fabric server with.
 
-**Install it on both the server and the client.** Players without ModWarden are kicked after 5 seconds.
+When a player joins, ModWarden compares their installed mods with your rules and kicks them with a clear message if they break them. No more guessing who is running what.
 
-## Config
+## Features
 
-`config/modwarden.json` is created on the first server start:
+- **Whitelist or banlist mode.** Allow only the mods you list, or allow everything except the mods you list.
+- **Fabric API is always allowed.** Every `fabric-*` module is trusted, so the check keeps working across game versions.
+- **Kick messages in 5 languages.** English, Русский, Français, Italiano, Español, picked from the player's game language. Other languages fall back to English.
+- **One jar per version range, 1.21 to 26.3.**
+
+## Setup
+
+Install ModWarden on **both the server and the client**. Players without it are kicked after 5 seconds.
+
+On the first server start, `config/modwarden.json` is created:
 
 ```json
 {
@@ -18,13 +27,7 @@ Checks which mods a player has installed when they join a Fabric server, and kic
 - `whitelist`: players may only have the mods listed in `mods`.
 - `banlist`: players may have anything except the mods listed in `mods`.
 
-Use mod **ids** (for example `sodium`, not "Sodium"). These are always allowed: `minecraft`, `java`, `fabricloader`, `modwarden`, and every Fabric API module (`fabric-*`).
-
-The config is read when the server starts.
-
-## Languages
-
-Kick messages follow the player's game language: English, Русский, Français, Italiano, Español. Any other language falls back to English.
+Use mod **ids** (for example `sodium`, not "Sodium"). These are always allowed: `minecraft`, `java`, `fabricloader`, `modwarden` and every Fabric API module. The config is read when the server starts.
 
 ## Limitations
 
